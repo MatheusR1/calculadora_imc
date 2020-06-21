@@ -19,7 +19,7 @@ class _HomeState extends State<Home> {
   TextEditingController heightController = TextEditingController();
   String _infotext = "informe seus dados ";
 
-  GlobalKey<FormState> _formakey = GlobalKey<FormState>();
+  GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   void _resetFields() {
     weightController.text = "";
@@ -27,6 +27,7 @@ class _HomeState extends State<Home> {
 
     setState(() {
       _infotext = "informe seus dados";
+      _formKey = GlobalKey<FormState>();
     });
   }
 
@@ -70,7 +71,7 @@ class _HomeState extends State<Home> {
         body: SingleChildScrollView(
             padding: EdgeInsets.fromLTRB(20.0, 5.0, 20.0, 0.0),
             child: Form(
-              key: _formakey,
+              key: _formKey,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 // manipula o eixo cuzado
@@ -114,7 +115,7 @@ class _HomeState extends State<Home> {
                         height: 50.00,
                         child: RaisedButton(
                           onPressed: (){
-                            if (_formakey.currentState.validate()){
+                            if (_formKey.currentState.validate()){
                                 calculate();
                             }
                           },
